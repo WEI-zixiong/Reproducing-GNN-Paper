@@ -1,9 +1,3 @@
-%% write txt files
-% 1-load node_features first
-% manually
-% 2-conversion
-test=table2array(nodefeatures);
-% 3-convert to cell
 
 %% write data file
 test=table2array(nodefeatures);
