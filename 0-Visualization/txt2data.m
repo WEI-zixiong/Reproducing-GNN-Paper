@@ -4,34 +4,7 @@
 % 2-conversion
 test=table2array(nodefeatures);
 % 3-convert to cell
-num =1;
-for i = 1:3:1200
-    data{num} = test(i:i+2,:);
-    num = num+1;
-end
-% write txt
-for i = 1:400
-    % remove nan
-    for j = 1:3
-        data_no_NaN{i}(j,:) = rmmissing(data{i}(j,:)); 
-    end
-    % tranverse
-    data_no_NaN_trans{i}=data_no_NaN{i}';
-    % add atome-ID atome-type
-    row = size(data_no_NaN_trans{i},1); 
-    data_final{i}(1:row,1) = [1:1:row];
-    data_final{i}(1:row,2) = ones(row,1);
-    data_final{i}(:,3:5) = data_no_NaN_trans{i};
-    % write
-    filename = [num2str(i),'.txt'];
-    writematrix(data_final{i},filename,'Delimiter','space');
-end
-% check box size
-for i =1:400
-    for j = 1:3
-        MAX(i,j)=max(data_no_NaN_trans{i}(:,j));
-    end
-end
+
 %% write data file
 test=table2array(nodefeatures);
 num =1;
