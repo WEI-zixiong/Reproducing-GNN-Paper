@@ -2,7 +2,6 @@ import os
 import re
 import pandas as pd
 def edge(file_order, input_file_path, output_file_path):
-    # structure_file = r'E:\file\python-code\GNN\reshow\3-feed_GNN\structure00001.data'
     coord = []  # stores coordinates
     file_list = [] # stores the name of all structure.data
     data_file_po = [] # stores the name of the path of all structure.data
@@ -20,12 +19,9 @@ def edge(file_order, input_file_path, output_file_path):
         file_column.append(column_name.format('Data' + str(o + 1).zfill(5)))
     with open(data_file_po[file_order], 'r') as f:
         lines = f.readlines()
-    # with open(structure_file, 'r') as stru:
-    #     lines = stru.readlines()
         for a, line in enumerate(lines):
             if a > 16:
                 coord.append(line)
-    # stru.close()
     cut_off = 3.2
     distance_save = [] # stores all the distances
     row = [] # atom IDs of centered atom
@@ -40,7 +36,6 @@ def edge(file_order, input_file_path, output_file_path):
             distance = ((float(coord_split_i[2]) - float(coord_split_j[2])) ** 2 +
                         (float(coord_split_i[3]) - float(coord_split_j[3])) ** 2 +
                         (float(coord_split_i[4]) - float(coord_split_j[4])) ** 2) ** 0.5
-            # print(j)
             distance_save.append(distance)
             if 0 < distance <= cut_off:
                 column.append(atom_j)
@@ -60,8 +55,6 @@ def edge(file_order, input_file_path, output_file_path):
     # Add the last list to numbers if it exists
     if current_list:
         numbers[len(numbers) + 1] = current_list
-    # print(numbers)
-    # print(len(numbers.get(2)))
     #===========pd method=============# need further operations
     # df = pd.DataFrame.from_dict(numbers, orient='index')
     # df.columns = ['cutoff'] * len(df.columns)
@@ -101,7 +94,7 @@ def edge(file_order, input_file_path, output_file_path):
     f.close()
     return print('finished')
 
-input_file_path = r'E:\file\python-code\GNN\reshow\3-feed_GNN\test_input_file'
-output_file_path = r'E:\file\python-code\GNN\reshow\3-feed_GNN'
+input_file_path = r'E:\file_path1'
+output_file_path = r'E:\file_path2'
 for b in range(10):
     edge(b, input_file_path, output_file_path)

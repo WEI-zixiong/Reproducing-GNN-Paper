@@ -3,12 +3,12 @@ import pandas as pd
 import os
 import re
 
-input_file_path = r'E:\file\python-code\GNN\reshow\conv2txt\out-data-test'
-output_file_path = r'E:\file\python-code\GNN\reshow\conv2txt\out-txt-test'
+input_file_path = r'E:\file_path\out-data-test'
+output_file_path = r'E:\file_path\out-txt-test'
 # os.mkdir(output_file_path)
 input_file_list = os.listdir(input_file_path)
 
-txt_path_format = r'E:\file\python-code\GNN\reshow\conv2txt\out-txt-test\{}'
+txt_path_format = r'E:\file_path\out-txt-test\{}'
 txt_name_format = r'{}'
 txt_path_name = []
 txt_out_name = []
@@ -18,7 +18,7 @@ for i in input_file_list:
     file_list += re_form.findall(i)
 
 data_file_po = [] # 所有data位置合集
-data_path_format = r'E:\file\python-code\GNN\reshow\conv2txt\out-data-test\{}'
+data_path_format = r'E:\file_path\out-data-test\{}'
 for j in list(range(len(file_list))):
     data_file_po.append(data_path_format.format(file_list[j]))
     txt_path_name.append(txt_path_format.format('structure' + str(j+1).zfill(5) + '.txt'))
